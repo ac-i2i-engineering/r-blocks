@@ -43,7 +43,7 @@ Blockly.Blocks['lib'] = {
 
 Blockly.JavaScript['lib'] = function(block) {
   var dropdown_library_name = block.getFieldValue('library_name');
-  var code = 'library(' + dropdown_library_name + ')\n';
+  var code = 'webr::install("' + dropdown_library_name + '")\n' + 'library(' + dropdown_library_name + ')\n';
   return code;
 };
 /************ ************************/
