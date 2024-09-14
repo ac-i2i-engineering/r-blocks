@@ -1,13 +1,14 @@
 //General
 import React, { useState } from 'react';
+// import { sendInput } from './compiler';
 
 //Modules (No Minor Modules please)
 
 //Icons
-import FolderIcon from '@mui/icons-material/Folder';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import DangerousIcon from '@mui/icons-material/Dangerous';
-import FiberNewIcon from '@mui/icons-material/FiberNew';
+// import FolderIcon from '@mui/icons-material/Folder';
+// import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+// import DangerousIcon from '@mui/icons-material/Dangerous';
+// import FiberNewIcon from '@mui/icons-material/FiberNew';
 
 //Blockly
 import Blockly from "blockly";
@@ -360,13 +361,19 @@ export default function Workspace() {
         ],
     };
 
-    function workspaceDidChange(workspace) {
+    async function workspaceDidChange(workspace) {
         const code = Blockly.JavaScript.workspaceToCode(workspace);
-        //setJavascriptCode(code);
-        //document.getElementById('codeBody').innerText = code;
-        const linked = 'https://rdrr.io/snippets/embed/?code=' + encodeURI(code)
-        //document.getElementById('URIBody').innerText = linked;
-        document.getElementById('snippet').src = linked;
+        console.log("Generated code:", code);
+    
+        try {
+            // Store the generated code in localStorage
+            localStorage.setItem('generatedCode', code);
+            
+            // Trigger a custom event to notify the compiler component
+            window.dispatchEvent(new Event('codeGenerated'));
+        } catch (error) {
+            console.error('Error storing generated code:', error);
+        }
     }
 
     /*
