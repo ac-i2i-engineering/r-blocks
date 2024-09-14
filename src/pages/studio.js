@@ -7,7 +7,6 @@ import Workspace from "./modules/workspace"
 import Compiler from "./modules/compiler"
 
 
-//Contexts
 
 export default function Studio() {
     return (

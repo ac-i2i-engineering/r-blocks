@@ -25,6 +25,7 @@ export default function Workspace() {
 
     const initialXml =
         '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="text" x="70" y="30"><field name="TEXT"></field></block></xml>';
+    
     const toolboxCategories = {
         kind: "categoryToolbox",
         contents: [
